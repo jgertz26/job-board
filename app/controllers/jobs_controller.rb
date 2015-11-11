@@ -8,6 +8,12 @@ class JobsController < ApplicationController
 
   def show
     @job = get_json(request.path)
+
+    user_id = current_user ? current_user.id : nil
+    click_info = { user_id: user_id, job_id: @job["id"]}
+
+    uri = URI("http://localhost:3000/events")
+    res = Net::HTTP.post_form(uri, click_info)
   end
 
   def new
@@ -15,8 +21,9 @@ class JobsController < ApplicationController
 
   def create
     uri = URI("http://localhost:3000/jobs")
-    res = Net::HTTP.post_form(uri, job_params)
-    flash[:success] = "Successfully created this thing"
+    Net::HTTP.post_form(uri, job_params)
+
+    flash[:success] = "Successfully posted job!"
     redirect_to jobs_path
   end
 
