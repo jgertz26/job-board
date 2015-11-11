@@ -4,7 +4,7 @@
   <% post_date = DateTime.strptime(job["posted"].to_s, '%s') %>
 
   <div class="job-row">
-    <%= link_to job['title'], "jobs/#{job['id']}" %>
+    <%= link_to job['title'], "jobs/#{job['id']}", class: "show-page-link" %>
     - posted on <%= job['poster'] %><br>
     <%= "#{job['company']} - #{job['city']}, #{job['state']}" %><br>
     <%= "#{post_date.strftime('%b. %-d, %Y')} - #{job['body']}" %>

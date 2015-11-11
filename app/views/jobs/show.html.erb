@@ -1,1 +1,9 @@
-<h1>lerhbshe</h1>
+<h2> <%= @job['title'] %> </h2>
+
+<% post_date = DateTime.strptime(@job["posted"].to_s, '%s') %>
+
+<div class="show-info">
+  posted on <%= @job['poster'] %><br>
+  <%= "#{@job['company']} - #{@job['city']}, #{@job['state']}" %><br>
+  <%= "#{post_date.strftime('%b. %-d, %Y')} - #{@job['body']}" %>
+</div>
