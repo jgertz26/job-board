@@ -1,7 +1,8 @@
 class JobsController < ApplicationController
+  before_action :signed_in?, only: [:new, :create]
 
   def index
-    @jobs = get_json(request.path)
+    @jobs = get_json("/jobs")
     @jobs.sort_by! { |j| j["posted"] }.reverse!
   end
 
@@ -15,7 +16,7 @@ class JobsController < ApplicationController
   def create
     uri = URI("http://localhost:3000/jobs")
     res = Net::HTTP.post_form(uri, job_params)
-    binding.pry
+    flash[:success] = "Successfully created this thing"
     redirect_to jobs_path
   end
 

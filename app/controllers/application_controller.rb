@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
     uri = URI("http://localhost:3000" + path)
     JSON.load(Net::HTTP.get(uri))
   end
+
+  def signed_in?
+    unless current_user
+      flash[:errors] = "You must be signed in to do that!"
+      redirect_to jobs_path
+    end
+  end
 end
