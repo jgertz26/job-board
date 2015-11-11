@@ -1,12 +1,21 @@
-<h2>All the jobs</h2>
+<h2>Browse Jobs</h2>
 
 <% @jobs.each do |job| %>
-  <% post_date = DateTime.strptime(job["posted"].to_s, '%s') %>
+  <% post_date = Time.at(job["posted"]).strftime('%b. %-d, %Y') %>
 
   <div class="job-row">
     <%= link_to job['title'], "jobs/#{job['id']}", class: "show-page-link" %>
-    - posted on <%= job['poster'] %><br>
-    <%= "#{job['company']} - #{job['city']}, #{job['state']}" %><br>
-    <%= "#{post_date.strftime('%b. %-d, %Y')} - #{job['body']}" %>
+    <em>- posted on <%= job['poster'] %></em>
+
+    <br>
+
+    <b><%= "#{job['company']} - #{job['city']}, #{job['state']}" %></b>
+
+    <br>
+
+    <em>
+      <%= post_date %>
+    </em>
+    - <%= job['body'] %>
   </div>
 <% end %>

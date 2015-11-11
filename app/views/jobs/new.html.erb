@@ -1,26 +1,26 @@
 <h2>Post a New Job</h2>
 
-<%= form_tag('/jobs') do -%>
-  <%= label_tag :poster, "Site posted on" %>
-  <%= text_field_tag :poster, nil, required: true %>
+<%= form_for @job do |f| -%>
+  <%= f.label :poster, "Site posted on" %>
+  <%= f.text_field :poster, required: true %>
 
-  <%= label_tag :company %>
-  <%= text_field_tag :company, nil, required: true  %>
+  <%= f.label :company %>
+  <%= f.text_field :company, required: true  %>
 
-  <%= label_tag :city %>
-  <%= text_field_tag :city, nil, required: true  %>
+  <%= f.label :city %>
+  <%= f.text_field :city, required: true  %>
 
-  <%= label_tag :state %>
-  <%= text_field_tag :state, nil, required: true  %>
+  <%= f.label :state %>
+  <%= f.text_field :state, required: true, placeholder: "XX"  %>
 
-  <%= label_tag :title, "Job Title" %>
-  <%= text_field_tag :title, nil, required: true  %>
+  <%= f.label :title, "Job Title" %>
+  <%= f.text_field :title, required: true  %>
 
-  <%= label_tag :body, "Description" %>
-  <%= text_field_tag :body, nil, required: true  %>
+  <%= f.label :keywords, "Search Keywords" %>
+  <%= f.text_field :keywords, required: true  %>
 
-  <%= label_tag :keywords, "Search Keywords" %>
-  <%= text_field_tag :keywords, nil, required: true  %>
+  <%= f.label :body, "Description" %>
+  <%= f.text_area :body, required: true  %>
 
-  <%= submit_tag "Post Job" %>
+  <%= f.submit "Post Job" %>
 <% end %>

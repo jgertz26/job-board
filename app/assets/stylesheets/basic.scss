@@ -1,7 +1,37 @@
+$success-color: #43AC6A;
+$monsoon      : #777777;
+$primary-color: #008CBA;
+
+
+
 .main-container {
   padding: 10px 30px;
 }
 
+b {
+  color: $success-color;
+}
+
+em {
+  color: $monsoon;
+  font-size: 11.5pt;
+}
+
+// ---------  Index page ---------
 .job-row {
   padding: 5px 0px;
+}
+
+.show-page-link {
+  font-weight: bolder;
+}
+
+// ---------  Show page ---------
+.show-title {
+  color: $primary-color;
+}
+
+// ---------  New page ---------
+form {
+  max-width: 500px;
 }
